@@ -1,0 +1,115 @@
+.word-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+.word-table th {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.word-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.word-table input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Общий стиль для кнопок */
+.button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Стили для кнопки "Edit" */
+.editButton {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+/* Стили для кнопки "Delete" */
+.deleteButton {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* Стили для кнопки "Save" */
+.saveButton {
+  background-color: #28a745;
+  color: #fff;
+}
+
+/* Анимация при наведении на кнопки */
+.button:hover {
+  background-color: #007bff;
+}
+
+/* Анимация при фокусе на кнопки */
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+/* Анимация при нажатии на кнопки */
+.button:active {
+  transform: scale(0.95);
+}
+
+/* Общие стили для иконок */
+.word-table button svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  width: 20px;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Стили для иконки галочки */
+.word-table button.saveButton::before {
+  content: "\f00c";
+  width: 20px;
+  height: 20px;
+}
+
+/* Стили для иконки крестика */
+.word-table button.cancelButton::before {
+  content: "\f00d";
+  width: 20px;
+  height: 20px;
+}
+
+/* Стили для иконки карандаша */
+.word-table button.editButton::before {
+  content: "\f304";
+  width: 20px;
+  height: 20px;
+}
+
+/* Стили для иконки мусорного ведра */
+.word-table button.deleteButton::before {
+  content: "\f1f8";
+  width: 20px;
+  height: 20px;
+}
+
+/* Стили для иконок при наведении и фокусе */
+.word-table button:hover,
+.word-table button:focus {
+  background-color: #dadbee;
+}

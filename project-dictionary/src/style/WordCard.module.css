@@ -1,0 +1,45 @@
+.word-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 16px 0;
+}
+
+.word-card h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.word-card input,
+.word-card button {
+  margin-bottom: 10px;
+}
+
+.word-cards-container {
+  margin-top: 20px;
+}
+
+.word-card p {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.word-card button {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.favorite-button {
+  margin-top: 8px;
+  color: red;
+  transition: color 0.3s ease;
+}
+
+.favorite-button:hover {
+  color: darkred;
+}
+
+.favorite-button-active {
+  color: transparent;
+}
