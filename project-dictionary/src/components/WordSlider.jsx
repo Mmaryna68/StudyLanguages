@@ -7,6 +7,7 @@ const WordSlider = ({
   favoriteWords,
   onFavoriteToggle,
   onCloseSlider,
+  onRemoveFromFavorites,
 }) => {
   return (
     <div className={styles["slider-container"]}>
@@ -20,8 +21,9 @@ const WordSlider = ({
             word={word.english}
             translation={word.russian}
             transcription={word.transcription}
-            isFavorite={favoriteWords.includes(word.english)}
-            onFavoriteToggle={onFavoriteToggle}
+            isFavorite={favoriteWords.some((favWord) => favWord.id === word.id)}
+            onFavoriteToggle={() => onFavoriteToggle(word.id)}
+            onRemoveFromFavorites={onRemoveFromFavorites}
           />
         ))}
       </div>

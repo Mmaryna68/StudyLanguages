@@ -17,6 +17,10 @@
   transition: height 0.3s;
 }
 
+.input-field:hover {
+  transform: scale(1.1);
+}
+
 .add-button {
   padding: 12px 24px;
   background-color: #007bff;

@@ -2,6 +2,13 @@
   border: 1px solid #ccc;
   padding: 16px;
   margin-bottom: 16px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: #f6e0c3;
+  border-radius: 15px;
+  margin: 10px;
 }
 
 .word-card h2 {
@@ -23,16 +30,10 @@
   margin-bottom: 4px;
 }
 
-.word-card button {
-  font-size: 20px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
 .favorite-button {
   margin-top: 8px;
   color: red;
+  background-color: transparent;
   transition: color 0.3s ease;
 }
 
@@ -42,4 +43,25 @@
 
 .favorite-button-active {
   color: transparent;
+}
+
+.show-translation-button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.show-translation-button:hover {
+  background-color: #0056b3;
+}
+
+.word-card button {
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
 }

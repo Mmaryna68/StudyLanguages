@@ -14,6 +14,13 @@
   transition: all 0.3s ease;
 }
 
+.word-slider {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  background-color: gray;
+}
+
 .close-button {
   position: absolute;
   top: 5px;

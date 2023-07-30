@@ -2,6 +2,7 @@
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #ccc;
+  margin: 28px;
 }
 
 .word-table th {
@@ -80,30 +81,11 @@
   transition: all 0.2s;
 }
 
-/* Стили для иконки галочки */
-.word-table button.saveButton::before {
-  content: "\f00c";
-  width: 20px;
-  height: 20px;
-}
-
-/* Стили для иконки крестика */
-.word-table button.cancelButton::before {
-  content: "\f00d";
-  width: 20px;
-  height: 20px;
-}
-
-/* Стили для иконки карандаша */
-.word-table button.editButton::before {
-  content: "\f304";
-  width: 20px;
-  height: 20px;
-}
-
-/* Стили для иконки мусорного ведра */
+/* Стили для иконок: галочки, крестика, карандаша, мусорного ведра  */
+.word-table button.saveButton::before,
+.word-table button.cancelButton::before,
+.word-table button.editButton::before,
 .word-table button.deleteButton::before {
-  content: "\f1f8";
   width: 20px;
   height: 20px;
 }

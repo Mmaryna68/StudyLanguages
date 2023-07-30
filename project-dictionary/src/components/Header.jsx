@@ -23,6 +23,10 @@ const Header = () => {
     }
   };
 
+  const handleRemoveFromFavorites = (word) => {
+    setFavoriteWords(favoriteWords.filter((favWord) => favWord.id !== word.id));
+  };
+
   return (
     <header className={styles.header}>
       <nav>
@@ -41,6 +45,7 @@ const Header = () => {
           favoriteWords={favoriteWords}
           onFavoriteToggle={handleFavoriteToggle}
           onCloseSlider={handleSliderToggle}
+          onRemoveFromFavorites={handleRemoveFromFavorites}
         />
       )}
     </header>
