@@ -1,0 +1,35 @@
+/* styles for the word-card-display container */
+.word-card-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  font-size: 16px;
+  padding: 13px 14px;
+  cursor: pointer;
+}
+
+.navigation-buttons:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+.card-index {
+  font-size: 16px;
+  margin: 0 10px;
+}

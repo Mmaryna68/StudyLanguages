@@ -1,28 +1,24 @@
-import { useState } from "react";
+// Card.jsx
+import React from "react";
 import styles from "../style/WordCard.module.css";
 
-const WordCard = ({
+const Card = ({
   word,
   translation,
   transcription,
   isFavorite,
   onFavoriteToggle,
-  onRemoveFromFavorites,
+  showTranslation,
+  onToggleTranslation,
 }) => {
-  const [showTranslation, setShowTranslation] = useState(false);
-
-  const handleShowTranslation = () => {
-    setShowTranslation(true);
-  };
-
   return (
     <div className={styles["word-card"]}>
       <h2>{word}</h2>
       {showTranslation && <p>Translation: {translation}</p>}
       <p>Transcription: {transcription}</p>
-      {showTranslation ? null : (
+      {!showTranslation && (
         <button
-          onClick={handleShowTranslation}
+          onClick={onToggleTranslation}
           className={styles["show-translation-button"]}
         >
           Show
@@ -30,19 +26,16 @@ const WordCard = ({
       )}
       <button
         onClick={() => {
-          onFavoriteToggle(word);
-          if (isFavorite) {
-            onRemoveFromFavorites(word);
-          }
+          onFavoriteToggle(word, !isFavorite);
         }}
         className={`${styles["favorite-button"]} ${
           isFavorite ? styles["is-favorite"] : ""
         }`}
       >
-        {isFavorite ? "\u2661" : "❤️"}
+        {isFavorite ? "❤️" : "\u2661"}
       </button>
     </div>
   );
 };
 
-export default WordCard;
+export default Card;

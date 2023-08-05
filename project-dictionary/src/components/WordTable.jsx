@@ -48,7 +48,7 @@ const WordTable = ({ words, onEditWord, onDeleteWord }) => {
       (word) => word.english.toLowerCase() === inputValue.toLowerCase()
     );
 
-    // Если певевод найден, устанавливаем его, иначе сохраняем предыдущий перевод
+    // Если перевод найден, устанавливаем его, иначе сохраняем предыдущий перевод
     if (foundTranslation) {
       setEditedTranslation(foundTranslation.russian);
     }

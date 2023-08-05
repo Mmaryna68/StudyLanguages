@@ -1,0 +1,36 @@
+.footer {
+  background-color: #f0f0f0;
+  padding: 30px;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: font-size 0.3s ease;
+}
+
+.button:hover {
+  font-size: 22px;
+}
+
+.navigation {
+  flex: 1;
+}
+
+.navigationList {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navigationItem {
+  margin-right: 20px;
+  cursor: pointer;
+  transition: font-size 0.3s ease;
+}
+
+.navigationItem:hover {
+  font-size: 22px;
+}
