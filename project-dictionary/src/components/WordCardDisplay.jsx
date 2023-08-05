@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Card from "./Card";
 import styles from "../style/CardDisplay.module.css";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const WordCardDisplay = ({ words }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -43,15 +44,28 @@ const WordCardDisplay = ({ words }) => {
         >
           ←
         </button>
-        <Card
-          word={currentWord.english}
-          translation={currentWord.russian}
-          transcription={currentWord.transcription}
-          isFavorite={favoriteWords.includes(currentWord.english)}
-          onFavoriteToggle={handleFavoriteToggle}
-          showTranslation={showTranslation}
-          onToggleTranslation={() => setShowTranslation((prev) => !prev)}
-        />
+        <TransitionGroup component={null}>
+          <CSSTransition
+            key={currentIndex}
+            classNames={{
+              enter: styles["slideInRight-enter"],
+              enterActive: styles["slideInRight-enter-active"],
+              exit: styles["slideOutLeft-exit"],
+              exitActive: styles["slideOutLeft-exit-active"],
+            }}
+            timeout={300}
+          >
+            <Card
+              word={currentWord.english}
+              translation={currentWord.russian}
+              transcription={currentWord.transcription}
+              isFavorite={favoriteWords.includes(currentWord.english)}
+              onFavoriteToggle={handleFavoriteToggle}
+              showTranslation={showTranslation}
+              onToggleTranslation={() => setShowTranslation((prev) => !prev)}
+            />
+          </CSSTransition>
+        </TransitionGroup>
         <button
           className={styles["navigation-buttons"]}
           onClick={handleNextCard}
@@ -64,6 +78,11 @@ const WordCardDisplay = ({ words }) => {
           Card {currentIndex + 1} of {words.length}
         </span>
       </div>
+      {currentIndex === words.length - 1 && (
+        <div>
+          <p>No more cards to show.</p>
+        </div>
+      )}
     </div>
   );
 };

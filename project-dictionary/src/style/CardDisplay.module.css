@@ -5,9 +5,47 @@
   align-items: center;
 }
 
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
 .card-container {
   display: flex;
   align-items: center;
+}
+
+.slideInRight-enter {
+  animation: slideInRight 0.3s;
+  opacity: 0;
+}
+
+.slideInRight-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.slideOutLeft-exit {
+  animation: slideOutLeft 0.3s;
+  opacity: 1;
+}
+
+.slideOutLeft-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-out;
 }
 
 .navigation-buttons {
