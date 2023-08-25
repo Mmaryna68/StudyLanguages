@@ -9,10 +9,15 @@
   cursor: pointer;
   font-size: 16px;
   transition: font-size 0.3s ease;
+  list-style: none;
+  color: black;
+  text-decoration: none;
 }
 
 .button:hover {
   font-size: 22px;
+  color: rgb(23, 113, 231);
+  text-decoration: underline;
 }
 
 .navigation {
@@ -33,4 +38,6 @@
 
 .navigationItem:hover {
   font-size: 22px;
+  color: rgb(23, 113, 231);
+  text-decoration: underline;
 }

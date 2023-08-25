@@ -3,6 +3,7 @@ import { useState } from "react";
 import WordCardDisplay from "./WordCardDisplay";
 import data from "../components/data.json";
 import styles from "../style/Footer.module.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [isWordCardDisplayOpen, setIsWordCardDisplayOpen] = useState(false);
@@ -23,9 +24,13 @@ const Footer = () => {
             </li>
           ))}
           <li>
-            <button className={styles.button} onClick={handleWordCardToggle}>
-              WORD CARD
-            </button>
+            <Link
+              to="/word-card"
+              className={styles.button}
+              onClick={handleWordCardToggle}
+            >
+              GAME
+            </Link>
           </li>
         </ul>
       </nav>
