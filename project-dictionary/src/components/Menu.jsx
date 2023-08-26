@@ -21,8 +21,9 @@ const Menu = () => {
         <li>
           <Link to="/word-card">GAME</Link>
         </li>
-
-        {/* Добавьте другие ссылки по вашему желанию */}
+        <li>
+          <Link to="/word-list"> ADD WORD TO LIST</Link>
+        </li>
       </ul>
     </nav>
   );

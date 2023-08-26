@@ -1,16 +1,13 @@
 /* Menu.module.css */
-
 .menu {
+  max-width: 250px;
   background-color: #7ed7eb;
   color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
+  z-index: 100;
 }
 
 .logo a {
@@ -22,16 +19,18 @@
 
 .navigation {
   list-style: none;
-  display: flex;
+  padding: 0;
+  margin: 0;
 }
 
 .navigation li {
-  margin-right: 20px;
+  padding: 10px;
 }
 
 .navigation a {
   color: #fff;
   text-decoration: none;
+  display: block;
   font-size: 16px;
   transition: color 0.3s;
 }
@@ -45,6 +44,7 @@
 }
 
 .logo img {
-  width: 200px; /* Задайте нужную ширину */
-  height: auto; /* Это позволит изображению сохранить пропорции */
+  width: 200px;
+  height: auto;
+  padding: 10px;
 }

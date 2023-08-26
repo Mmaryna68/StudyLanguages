@@ -14,7 +14,7 @@
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  transition: height 0.3s;
+  transition: height 0.2s;
 }
 
 .input-field:hover {

@@ -3,7 +3,7 @@ import { useState } from "react";
 import WordCardDisplay from "./WordCardDisplay";
 import data from "../components/data.json";
 import styles from "../style/Footer.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
   const [isWordCardDisplayOpen, setIsWordCardDisplayOpen] = useState(false);
@@ -12,15 +12,21 @@ const Footer = () => {
     setIsWordCardDisplayOpen(!isWordCardDisplayOpen);
   };
 
-  const navigationLinks = ["HOME", "ABOUT US", "LANGUAGE"];
+  const location = useLocation();
+
+  const navigationLinks = [
+    { label: "HOME", path: "/" },
+    { label: "ABOUT US", path: "/about" },
+    { label: "LANGUAGE", path: "/language" },
+  ];
 
   return (
     <footer className={styles.footer}>
       <nav className={styles.navigation}>
         <ul className={styles.navigationList}>
           {navigationLinks.map((link) => (
-            <li className={styles.navigationItem} key={link}>
-              {link}
+            <li className={styles.navigationItem} key={link.label}>
+              <Link to={link.path}>{link.label}</Link>
             </li>
           ))}
           <li>
@@ -35,7 +41,9 @@ const Footer = () => {
         </ul>
       </nav>
 
-      {isWordCardDisplayOpen && <WordCardDisplay words={data} />}
+      {isWordCardDisplayOpen && location.pathname === "/" && (
+        <WordCardDisplay words={data} />
+      )}
     </footer>
   );
 };

@@ -1,6 +1,6 @@
 .word-card {
   border: 1px solid #ccc;
-  padding: 16px;
+  padding: -10px;
   margin-bottom: 16px 0;
   display: flex;
   flex-direction: column;
