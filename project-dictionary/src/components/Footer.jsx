@@ -1,5 +1,5 @@
 // Footer.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import WordCardDisplay from "./WordCardDisplay";
 import data from "../components/data.json";
 import styles from "../style/Footer.module.css";
@@ -19,6 +19,15 @@ const Footer = () => {
     { label: "ABOUT US", path: "/about" },
     { label: "LANGUAGE", path: "/language" },
   ];
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setIsWordCardDisplayOpen(false);
+    }
+    if (location.pathname === "/word-card") {
+      setIsWordCardDisplayOpen(false);
+    }
+  }, [location]);
 
   return (
     <footer className={styles.footer}>
@@ -41,7 +50,7 @@ const Footer = () => {
         </ul>
       </nav>
 
-      {isWordCardDisplayOpen && location.pathname === "/" && (
+      {isWordCardDisplayOpen && location.pathname === "/word-card" && (
         <WordCardDisplay words={data} />
       )}
     </footer>
