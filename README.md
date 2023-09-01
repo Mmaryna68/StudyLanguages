@@ -40,7 +40,7 @@ The inspiration behind this project comes from the growing need for effective la
 
 To run this project locally, follow these steps:
 
-1. Clone this repository to your local machine.
+1. Clone this repository to your local machine: https://github.com/Mmaryna68/StudyLanguages.
 2. Install the required dependencies using `npm install`.
 3. Start the development server using `npm start`.
 4. Open your browser and navigate to `http://localhost:3000`.
