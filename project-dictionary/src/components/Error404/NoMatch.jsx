@@ -1,6 +1,6 @@
 //NoMatch.jsx
 import { Link } from "react-router-dom";
-import styles from "../style/NoMatch.module.css";
+import styles from "./NoMatch.module.css";
 
 const NoMatch = () => {
   return (

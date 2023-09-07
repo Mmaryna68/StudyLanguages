@@ -1,6 +1,6 @@
 // WordList.jsx
 import React, { useState } from "react";
-import styles from "../style/WordList.module.css";
+import styles from "./WordList.module.css";
 
 const WordList = ({ words, onAddWord }) => {
   const [newWord, setNewWord] = useState(""); // Состояние для хранения нового слова

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../style/WordCard.module.css";
+import styles from "./WordCard.module.css";
 
 const WordCard = ({
   word,

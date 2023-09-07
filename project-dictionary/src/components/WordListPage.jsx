@@ -1,7 +1,7 @@
 // WordListPage.jsx
-import WordList from "./WordList";
+import WordList from "./WordList/WordList";
 import styles from "../style/WordListPage.module.css"; // Создайте файл стилей для WordListPage
-import Menu from "./Menu";
+import Menu from "./Menu/Menu";
 
 const WordListPage = () => {
   return (

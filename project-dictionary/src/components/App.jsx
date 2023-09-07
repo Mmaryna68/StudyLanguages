@@ -5,9 +5,9 @@ import HomePage from "./HomePage";
 import WordCardPage from "./WordCardPage";
 import WordTablePage from "./WordTablePage";
 import WordListPage from "./WordListPage";
-import Footer from "./Footer";
-import Header from "./Header";
-import NoMatch from "./NoMatch";
+import Footer from "./Footer/Footer";
+import Header from "./Header/Header";
+import NoMatch from "./Error404/NoMatch";
 
 function App() {
   return (

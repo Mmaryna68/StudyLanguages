@@ -1,8 +1,8 @@
 // Header.jsx
 import React, { useState } from "react";
-import WordSlider from "./WordSlider";
-import styles from "../style/Header.module.css";
-import data from "../components/data.json";
+import WordSlider from "../Favourite/WordSlider";
+import styles from "./Header.module.css";
+import data from "../data/data.json";
 
 const Header = () => {
   const [isSliderOpen, setIsSliderOpen] = useState(false);

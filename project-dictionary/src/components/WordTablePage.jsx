@@ -1,8 +1,8 @@
 // WordTablePage.jsx
-import WordTable from "./WordTable";
-import data from "../components/data.json";
+import WordTable from "./WordTable/WordTable";
+import data from "../components/data/data.json";
 import styles from "../style/WordTablePage.module.css";
-import Menu from "./Menu";
+import Menu from "./Menu/Menu";
 
 const WordTablePage = () => {
   return (

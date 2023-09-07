@@ -1,6 +1,6 @@
-import React from "react";
-import WordCard from "./WordCard";
-import styles from "../style/Slider.module.css";
+// WordSlider.jsx
+import WordCard from "../Card/WordCard";
+import styles from "./Slider.module.css";
 
 const WordSlider = ({
   words,

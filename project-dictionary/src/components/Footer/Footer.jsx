@@ -1,8 +1,8 @@
 // Footer.jsx
 import { useState, useEffect } from "react";
-import WordCardDisplay from "./WordCardDisplay";
-import data from "../components/data.json";
-import styles from "../style/Footer.module.css";
+import WordCardDisplay from "../Game/WordCardDisplay";
+import data from "../data/data.json";
+import styles from "./Footer.module.css";
 import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {

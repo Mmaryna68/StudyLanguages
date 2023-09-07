@@ -1,7 +1,7 @@
 // WordCardDisplay.jsx
 import { useState } from "react";
-import Card from "./Card";
-import styles from "../style/CardDisplay.module.css";
+import Card from "../Card/Card";
+import styles from "./CardDisplay.module.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const WordCardDisplay = ({ words }) => {

@@ -1,3 +1,4 @@
+// WordTable.jsx
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Импорт компонента для использования иконок Font Awesome
 import {
@@ -6,7 +7,7 @@ import {
   faEdit,
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons"; // Импорт иконок для кнопок
-import styles from "../style/WordTable.module.css";
+import styles from "./WordTable.module.css";
 
 const WordTable = ({ words, onEditWord, onDeleteWord }) => {
   const [editedWordId, setEditedWordId] = useState(null);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import WordTable from "./WordTable";
-import WordList from "./WordList";
-import data from "../components/data.json";
+import WordTable from "../WordTable";
+import WordList from "../WordList/WordList";
+import data from "../data/data.json";
 
 const Main = () => {
   const [words, setWords] = useState(data); // Состояние для хранения списка слов

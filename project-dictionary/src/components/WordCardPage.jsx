@@ -1,7 +1,7 @@
 // WordCardPage.jsx
-import WordCardDisplay from "./WordCardDisplay";
-import data from "../components/data.json";
-import Menu from "./Menu";
+import WordCardDisplay from "./Game/WordCardDisplay";
+import data from "../components/data/data.json";
+import Menu from "./Menu/Menu";
 
 const WordCardPage = () => {
   return (

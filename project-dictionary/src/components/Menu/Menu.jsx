@@ -1,7 +1,7 @@
 // Menu
 import { Link } from "react-router-dom";
-import styles from "../style/Menu.module.css";
-import logo from "../images/logo.png";
+import styles from "./Menu.module.css";
+import logo from "../../images/logo.png";
 
 const Menu = () => {
   return (
