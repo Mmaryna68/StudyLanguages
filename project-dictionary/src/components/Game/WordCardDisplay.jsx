@@ -8,6 +8,7 @@ const WordCardDisplay = ({ words }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showTranslation, setShowTranslation] = useState(false);
   const [favoriteWords, setFavoriteWords] = useState([]);
+  const [learnedWordsCount, setLearnedWordsCount] = useState(0);
 
   const handleNextCard = () => {
     setCurrentIndex((prevIndex) =>
@@ -33,6 +34,11 @@ const WordCardDisplay = ({ words }) => {
         prevFavoriteWords.filter((favWord) => favWord !== word)
       );
     }
+  };
+
+  // Функция для увеличения счетчика изученных слов
+  const handleIncrementLearnedWords = () => {
+    setLearnedWordsCount((prevCount) => prevCount + 1);
   };
 
   return (
@@ -62,7 +68,10 @@ const WordCardDisplay = ({ words }) => {
               isFavorite={favoriteWords.includes(currentWord.english)}
               onFavoriteToggle={handleFavoriteToggle}
               showTranslation={showTranslation}
-              onToggleTranslation={() => setShowTranslation((prev) => !prev)}
+              onToggleTranslation={() => {
+                setShowTranslation((prev) => !prev);
+                handleIncrementLearnedWords(); // Вызываем функцию увеличения счетчика
+              }}
             />
           </CSSTransition>
         </TransitionGroup>
@@ -77,6 +86,9 @@ const WordCardDisplay = ({ words }) => {
         <span className={styles["card-index"]}>
           Card {currentIndex + 1} of {words.length}
         </span>
+      </div>
+      <div>
+        <p>Learned Words in This Training Session: {learnedWordsCount}</p>
       </div>
       {currentIndex === words.length - 1 && (
         <div>
