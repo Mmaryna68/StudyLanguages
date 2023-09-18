@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import WordTable from "../WordTable";
+import WordTable from "../WordTable/WordTable";
 import WordList from "../WordList/WordList";
 import data from "../data/data.json";
 

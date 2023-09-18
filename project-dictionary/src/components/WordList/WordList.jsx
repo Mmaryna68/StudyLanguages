@@ -10,12 +10,18 @@ const WordList = ({ words, onAddWord }) => {
   };
 
   const handleAddNewWord = () => {
+    // Проверяем, что новое слово не пустое
+    if (newWord.trim() === "") {
+      alert("Please enter a word.");
+      return;
+    }
+
     // Создаем новый объект слова и добавляем его в список слов
     const newWordObject = {
-      id: Math.floor(Math.random() * 1000), // Генерируем случайный id для нового слова (просто для примера)
+      id: Math.floor(Math.random() * 1000), // Генерируем случайный id для нового слова
       english: newWord,
-      russian: "", // Можно добавить поле для перевода и вводить его аналогично
-      theme: "", // Можно добавить поле для темы и вводить его аналогично
+      russian: "", // добавить поле для перевода
+      theme: "", // добавить поле для темы
     };
 
     onAddWord(newWordObject);

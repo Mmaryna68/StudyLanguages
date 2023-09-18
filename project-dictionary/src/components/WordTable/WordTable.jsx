@@ -7,6 +7,7 @@ import {
   faEdit,
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons"; // Импорт иконок для кнопок
+import data from "../data/data.json";
 import styles from "./WordTable.module.css";
 
 const WordTable = ({ words, onEditWord, onDeleteWord }) => {
@@ -14,51 +15,97 @@ const WordTable = ({ words, onEditWord, onDeleteWord }) => {
   const [editedWord, setEditedWord] = useState("");
   const [editedTranslation, setEditedTranslation] = useState("");
   const [autocompleteOptions, setAutocompleteOptions] = useState([]);
+  const [errorWord, setErrorWord] = useState(false);
+  const [errorTranslation, setErrorTranslation] = useState(false);
 
   const handleEdit = (wordId, word, translation) => {
     setEditedWordId(wordId);
     setEditedWord(word);
     setEditedTranslation(translation);
-    setAutocompleteOptions([]); // Очистить список автозаполнения при редактировании слова
+    setAutocompleteOptions([]);
+    setErrorWord(false); // Сбрасываем ошибку при редактировании
+    setErrorTranslation(false);
   };
 
   const handleSave = () => {
-    onEditWord(editedWordId, editedWord, editedTranslation);
+    const trimmedWord = editedWord.trim();
+    const trimmedTranslation = editedTranslation.trim();
+
+    // Проверяем, что введенное слово существует в данных
+    const isWordValid = data.some((item) => item.english === trimmedWord);
+
+    if (!isWordValid) {
+      setErrorWord(true);
+      return;
+    } else {
+      setErrorWord(false);
+    }
+
+    if (trimmedWord === "") {
+      setErrorWord(true); // Устанавливаем ошибку, если поле пустое
+    } else {
+      setErrorWord(false); // Сбрасываем ошибку, если поле заполнено
+    }
+
+    if (trimmedTranslation === "") {
+      setErrorTranslation(true);
+    } else {
+      setErrorTranslation(false);
+    }
+
+    if (trimmedWord === "" || trimmedTranslation === "") {
+      return;
+    }
+
+    onEditWord(editedWordId, trimmedWord, trimmedTranslation);
     setEditedWordId(null);
   };
 
   const handleCancel = () => {
     setEditedWordId(null);
-    setAutocompleteOptions([]); // Очистить список автозаполнения при отмене
+    setAutocompleteOptions([]);
+    setErrorWord(false); // Сбрасываем ошибку при отмене
+    setErrorTranslation(false);
   };
 
   const handleWordChange = (e) => {
     const inputValue = e.target.value;
     setEditedWord(inputValue);
 
-    // Обновить список опций автозаполнения
     const filteredOptions = words.filter((word) =>
       word.english.toLowerCase().startsWith(inputValue.toLowerCase())
     );
 
-    // Update the autocomplete options list
     setAutocompleteOptions(filteredOptions);
 
-    // Находим перевод введенного слова
     const foundTranslation = words.find(
       (word) => word.english.toLowerCase() === inputValue.toLowerCase()
     );
 
-    // Если перевод найден, устанавливаем его, иначе сохраняем предыдущий перевод
     if (foundTranslation) {
       setEditedTranslation(foundTranslation.russian);
     }
+
+    // Обновляем состояние ошибки для слова
+    setErrorWord(inputValue.trim() === "");
+    setErrorTranslation(false); // Сбрасываем ошибку для перевода
+  };
+
+  const handleTranslationChange = (e) => {
+    const inputValue = e.target.value;
+    setEditedTranslation(inputValue);
+
+    // Обновляем состояние ошибки для перевода
+    setErrorTranslation(inputValue.trim() === "");
+    setErrorWord(false); // Сбрасываем ошибку для слова
   };
 
   const handleOptionClick = (option) => {
     setEditedWord(option.english);
     setEditedTranslation(option.russian);
-    setAutocompleteOptions([]); // Скрыть выпадающий список после выбора опции
+    setAutocompleteOptions([]);
+
+    setErrorWord(false);
   };
 
   return (
@@ -81,7 +128,13 @@ const WordTable = ({ words, onEditWord, onDeleteWord }) => {
                     value={editedWord}
                     onChange={handleWordChange}
                     list="autocompleteList"
+                    className={errorWord ? styles.error : ""}
                   />
+                  {errorWord && (
+                    <div className={styles.errorMessage}>
+                      Fill in the word field.
+                    </div>
+                  )}
                   <datalist id="autocompleteList">
                     {autocompleteOptions.map((option) => (
                       <option
@@ -93,18 +146,26 @@ const WordTable = ({ words, onEditWord, onDeleteWord }) => {
                   </datalist>
                 </div>
               ) : (
-                word.english
+                <span>{word.english}</span>
               )}
             </td>
             <td>
               {editedWordId === word.id ? (
-                <input
-                  type="text"
-                  value={editedTranslation}
-                  onChange={(e) => setEditedTranslation(e.target.value)}
-                />
+                <div>
+                  <input
+                    type="text"
+                    value={editedTranslation}
+                    onChange={handleTranslationChange}
+                    className={errorTranslation ? styles.error : ""}
+                  />
+                  {errorTranslation && (
+                    <div className={styles.errorMessage}>
+                      Fill in the translation field.
+                    </div>
+                  )}
+                </div>
               ) : (
-                word.russian
+                <span>{word.russian}</span>
               )}
             </td>
             <td>
@@ -113,16 +174,15 @@ const WordTable = ({ words, onEditWord, onDeleteWord }) => {
                   <button
                     className={`${styles.saveButton} ${styles.button}`}
                     onClick={handleSave}
+                    disabled={errorWord || errorTranslation}
                   >
-                    <FontAwesomeIcon icon={faSave} />{" "}
-                    {/*  иконка для сохранения */}
+                    <FontAwesomeIcon icon={faSave} /> Save
                   </button>
                   <button
                     className={`${styles.cancelButton} ${styles.button}`}
                     onClick={handleCancel}
                   >
-                    <FontAwesomeIcon icon={faTimes} />{" "}
-                    {/*  иконка для отмены */}
+                    <FontAwesomeIcon icon={faTimes} /> Cancel
                   </button>
                 </>
               ) : (
@@ -133,15 +193,13 @@ const WordTable = ({ words, onEditWord, onDeleteWord }) => {
                       handleEdit(word.id, word.english, word.russian)
                     }
                   >
-                    <FontAwesomeIcon icon={faEdit} />{" "}
-                    {/*  иконка для редактирования */}
+                    <FontAwesomeIcon icon={faEdit} />
                   </button>
                   <button
                     className={`${styles.deleteButton} ${styles.button}`}
                     onClick={() => onDeleteWord(word.id)}
                   >
-                    <FontAwesomeIcon icon={faTrashAlt} />{" "}
-                    {/*  иконка для удаления */}
+                    <FontAwesomeIcon icon={faTrashAlt} />
                   </button>
                 </>
               )}

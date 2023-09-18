@@ -95,3 +95,13 @@
 .word-table button:focus {
   background-color: #dadbee;
 }
+
+/* Для выделения пустых полей красной рамкой */
+.word-table input[type="text"] {
+  border: 1px solid red;
+}
+
+/* Для серого текста в сообщениях об ошибке */
+.errorMessage {
+  color: gray;
+}
