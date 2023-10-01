@@ -72,6 +72,17 @@ const WordTable = ({ words, onEditWord, onDeleteWord }) => {
     const inputValue = e.target.value;
     setEditedWord(inputValue);
 
+    // Регулярное выражение для проверки на английские буквы
+    const englishLettersOnly = /^[a-zA-Z\s]*$/;
+
+    if (!englishLettersOnly.test(inputValue)) {
+      setErrorWord("Enter English letters");
+    } else if (inputValue.trim() === "") {
+      setErrorWord("Fill in the word field");
+    } else {
+      setErrorWord("");
+    }
+
     const filteredOptions = words.filter((word) =>
       word.english.toLowerCase().startsWith(inputValue.toLowerCase())
     );
@@ -87,25 +98,34 @@ const WordTable = ({ words, onEditWord, onDeleteWord }) => {
     }
 
     // Обновляем состояние ошибки для слова
-    setErrorWord(inputValue.trim() === "");
-    setErrorTranslation(false); // Сбрасываем ошибку для перевода
+    setErrorTranslation(""); // Сбрасываем ошибку для перевода
   };
 
   const handleTranslationChange = (e) => {
     const inputValue = e.target.value;
     setEditedTranslation(inputValue);
 
+    // Регулярное выражение для проверки на кириллицу
+    const russianLettersOnly = /^[а-яА-Я\s]*$/;
+
+    if (!russianLettersOnly.test(inputValue)) {
+      setErrorTranslation("Enter Russian letters");
+    } else if (inputValue.trim() === "") {
+      setErrorTranslation("Fill in the translation field");
+    } else {
+      setErrorTranslation("");
+    }
+
     // Обновляем состояние ошибки для перевода
-    setErrorTranslation(inputValue.trim() === "");
-    setErrorWord(false); // Сбрасываем ошибку для слова
+    setErrorWord(""); // Сбрасываем ошибку для слова
   };
 
   const handleOptionClick = (option) => {
     setEditedWord(option.english);
     setEditedTranslation(option.russian);
     setAutocompleteOptions([]);
-
     setErrorWord(false);
+    setErrorTranslation(false);
   };
 
   return (
@@ -129,11 +149,10 @@ const WordTable = ({ words, onEditWord, onDeleteWord }) => {
                     onChange={handleWordChange}
                     list="autocompleteList"
                     className={errorWord ? styles.error : ""}
+                    placeholder="Enter English letters"
                   />
                   {errorWord && (
-                    <div className={styles.errorMessage}>
-                      Fill in the word field.
-                    </div>
+                    <div className={styles.errorMessage}>{errorWord}</div>
                   )}
                   <datalist id="autocompleteList">
                     {autocompleteOptions.map((option) => (
@@ -157,10 +176,11 @@ const WordTable = ({ words, onEditWord, onDeleteWord }) => {
                     value={editedTranslation}
                     onChange={handleTranslationChange}
                     className={errorTranslation ? styles.error : ""}
+                    placeholder="Enter Russian letters"
                   />
                   {errorTranslation && (
                     <div className={styles.errorMessage}>
-                      Fill in the translation field.
+                      {errorTranslation}
                     </div>
                   )}
                 </div>
