@@ -1,0 +1,13 @@
+/* ErrorDisplay.module.css */
+.errorContainer {
+  background-color: #ffcccc;
+  border: 1px solid #ff3333;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.errorMessage {
+  color: #ff3333;
+}

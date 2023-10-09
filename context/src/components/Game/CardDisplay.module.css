@@ -1,0 +1,77 @@
+/* styles for the word-card-display container */
+.word-card-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 65px;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 25px;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.slideInRight-enter {
+  animation: slideInRight 0.3s;
+  opacity: 0;
+}
+
+.slideInRight-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.slideOutLeft-exit {
+  animation: slideOutLeft 0.3s;
+  opacity: 1;
+}
+
+.slideOutLeft-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+}
+
+.navigation-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  font-size: 16px;
+  padding: 13px 14px;
+  cursor: pointer;
+}
+
+.navigation-buttons:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+.card-index {
+  font-size: 16px;
+  margin: 0 10px;
+}
