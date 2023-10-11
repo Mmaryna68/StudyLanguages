@@ -12,34 +12,43 @@ const fetchWords = async () => {
   }
 };
 
-const updateWordApi = async (wordId, editedWord, editedTranslation) => {
-  const url = `${BASE_URL}/${wordId}`;
+const updateWordApi = async (
+  wordId,
+  editedWord,
+  editedTranslation,
+  tags = "",
+  tags_json = "[]"
+) => {
+  const url = `${BASE_URL}/${wordId}/update`;
 
   try {
-    const response = await axios.put(url, {
+    const response = await axios.post(url, {
       english: editedWord,
       russian: editedTranslation,
+      tags: tags,
+      tags_json: tags_json,
     });
 
     return response.data;
   } catch (error) {
-    throw new Error(`Failed to update word with ID ${wordId}.`);
+    throw new Error(`Failed to update word with ID ${wordId}`, error);
   }
 };
 
 const deleteWordApi = async (wordId) => {
-  const url = `${BASE_URL}/${wordId}`;
+  const url = `${BASE_URL}/${wordId}/delete`;
 
   try {
-    await axios.delete(url);
+    await axios.post(url);
   } catch (error) {
     throw new Error(`Failed to delete word with ID ${wordId}.`);
   }
 };
 
 const addWordApi = async (newWord, newTranslation) => {
+  const url = `${BASE_URL}/add`;
   try {
-    const response = await axios.post(BASE_URL, {
+    const response = await axios.post(url, {
       english: newWord,
       russian: newTranslation,
     });

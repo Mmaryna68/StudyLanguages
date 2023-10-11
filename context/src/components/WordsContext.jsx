@@ -62,9 +62,9 @@ const WordsProvider = ({ children }) => {
     }
   };
 
-  const addWord = async (newWord) => {
+  const addWord = async (newWord, newTranslation) => {
     try {
-      const addedWord = await addWordApi(newWord);
+      const addedWord = await addWordApi(newWord, newTranslation);
       setWords((prevWords) => [...prevWords, addedWord]);
 
       // Логирование

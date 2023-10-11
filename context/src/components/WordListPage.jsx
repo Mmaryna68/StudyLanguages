@@ -1,4 +1,5 @@
 // WordListPage.jsx
+import { fetchWords } from "./Api";
 import React, { useContext, useState, useEffect } from "react";
 import ErrorDisplay from "./Error/ErrorDisplay";
 import LoadingIndicator from "./LoadingIndicator/LoadingIndicator";
@@ -6,8 +7,6 @@ import WordTable from "./WordTable/WordTable";
 import Menu from "./Menu/Menu";
 import styles from "../style/WordListPage.module.css";
 import { WordsContext } from "./WordsContext";
-import { addWordApi } from "./Api";
-import { fetchWords } from "./Api";
 
 const WordListPage = () => {
   const { words, addWord, setWords } = useContext(WordsContext);
@@ -39,11 +38,7 @@ const WordListPage = () => {
     }
 
     try {
-      const addedWord = await addWordApi(newWord, newTranslation); // Передаем новый перевод в функцию addWordApi
-
-      // Вызываем функцию для добавления слова из контекста
-      addWord(addedWord);
-
+      addWord(newWord, newTranslation);
       setNewWord("");
       setNewTranslation(""); // Очищаем поле для нового перевода
     } catch (error) {
