@@ -1,7 +1,7 @@
 // Api.jsx
 import axios from "axios";
 
-const BASE_URL = "http://itgirlschool.justmakeit.ru/api/words";
+const BASE_URL = "/api/words";
 
 const fetchWords = async () => {
   try {
