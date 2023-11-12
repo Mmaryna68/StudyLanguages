@@ -1,0 +1,45 @@
+.footer {
+  background-color: #f0f0f0;
+  padding: 30px;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: font-size 0.3s ease;
+  list-style: none;
+  color: black;
+  text-decoration: none;
+}
+
+.button:hover {
+  font-size: 22px;
+  color: rgb(23, 113, 231);
+  text-decoration: underline;
+}
+
+.navigation {
+  flex: 1;
+}
+
+.navigationList {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navigation a {
+  margin-right: 20px;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  transition: font-size 0.3s ease;
+}
+
+.navigation a:hover {
+  font-size: 22px;
+  color: rgb(23, 113, 231);
+  text-decoration: underline;
+}
